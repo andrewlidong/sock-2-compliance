@@ -1,0 +1,680 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Socks — A Talk</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/night.css"
+      id="theme"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/monokai.css"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --warm: #f4c77b;
+        --warm-2: #e98a4b;
+        --cool: #8fb8de;
+        --ink: #1b1b1f;
+        --paper: #f7f1e3;
+      }
+      .reveal {
+        font-family: "Comic Neue", "Comic Sans MS", "Chalkboard SE", cursive;
+      }
+      .reveal h1,
+      .reveal h2,
+      .reveal h3 {
+        font-family: "Comic Neue", "Comic Sans MS", "Chalkboard SE", cursive;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+      .reveal h1 .accent,
+      .reveal h2 .accent {
+        color: var(--warm);
+      }
+      .reveal .footnote {
+        font-size: 0.45em;
+        opacity: 0.65;
+        margin-top: 1em;
+      }
+      .reveal .big-stat {
+        font-size: 2.4em;
+        color: var(--warm);
+        font-weight: 700;
+        line-height: 1.1;
+      }
+      .reveal .sub {
+        opacity: 0.75;
+        font-size: 0.8em;
+      }
+      .reveal section.section-title {
+        text-align: left;
+      }
+      .reveal section.section-title h2 {
+        font-size: 3em;
+        margin-bottom: 0.1em;
+      }
+      .reveal .kicker {
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        font-size: 0.55em;
+        color: var(--warm);
+      }
+      .reveal blockquote {
+        border-left: 4px solid var(--warm);
+        background: transparent;
+        font-style: italic;
+      }
+      .reveal ul,
+      .reveal ol {
+        line-height: 1.35;
+      }
+      .reveal ul li,
+      .reveal ol li {
+        margin: 0.15em 0;
+      }
+      .reveal section {
+        font-size: 0.85em;
+      }
+      .reveal section.section-title {
+        font-size: 1em;
+      }
+      .reveal h3 {
+        margin-bottom: 0.4em;
+      }
+      .reveal blockquote {
+        font-size: 0.9em;
+      }
+      .reveal .two-col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5em;
+        text-align: left;
+      }
+      .reveal .card {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 12px;
+        padding: 0.8em 1em;
+      }
+      .reveal .emoji {
+        font-size: 1.4em;
+      }
+      .reveal .timeline {
+        text-align: left;
+        font-size: 0.7em;
+      }
+      .reveal .timeline li {
+        margin: 0.4em 0;
+      }
+      .reveal .timeline b {
+        color: var(--warm);
+        margin-right: 0.5em;
+      }
+      .reveal .small {
+        font-size: 0.7em;
+      }
+      .reveal .tier-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4em;
+        text-align: left;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+      .reveal .tier-row {
+        display: grid;
+        grid-template-columns: 90px 1fr;
+        align-items: stretch;
+        border-radius: 8px;
+        overflow: hidden;
+      }
+      .reveal .tier-label {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.8em;
+        font-weight: 900;
+        color: #1b1b1f;
+        letter-spacing: 0;
+      }
+      .reveal .tier-S .tier-label { background: #ff5a5a; }
+      .reveal .tier-A .tier-label { background: #ff9d3a; }
+      .reveal .tier-B .tier-label { background: #f4c77b; }
+      .reveal .tier-C .tier-label { background: #7fc97f; color: #fff; }
+      .reveal .tier-F .tier-label { background: #777; color: #fff; }
+      .reveal .tier-body {
+        background: rgba(255, 255, 255, 0.06);
+        padding: 0.55em 0.9em;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .reveal .tier-body strong {
+        font-size: 0.95em;
+      }
+      .reveal .tier-body .small {
+        font-size: 0.65em;
+        opacity: 0.75;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <!-- =================== TITLE =================== -->
+        <section>
+          <h1>
+            <span class="accent">socks</span>
+          </h1>
+          <p class="sub">a short talk</p>
+          <p class="footnote">Recurse Center · non-programming talks 2026</p>
+        </section>
+
+        <section>
+          <h3>roadmap</h3>
+          <ol style="text-align:left;">
+            <li>should you sleep with socks on?</li>
+            <li>a tour of sock companies</li>
+            <li>a deep history of Bombas</li>
+          </ol>
+        </section>
+
+        <!-- =================== PART 1: SLEEP =================== -->
+        <section class="section-title">
+          <p class="kicker">part 1</p>
+          <h2>sleeping <span class="accent">with socks on</span></h2>
+          <p class="sub">a controversial bedtime practice, defended on the merits</p>
+        </section>
+
+        <section>
+          <h3>the claim</h3>
+          <blockquote>
+            wearing socks to bed helps you fall asleep faster, stay asleep
+            longer, and may help with everything from hot flashes to Raynaud's syndrome.
+          </blockquote>
+          <p class="footnote">source: Sleep Foundation, <em>sleeping with socks on</em></p>
+        </section>
+
+        <section>
+          <h3>the (counterintuitive) mechanism</h3>
+          <p>warming your <strong>feet</strong> <em>cools</em> your <strong>core</strong>.</p>
+          <ul>
+            <li><strong>distal vasodilation</strong>: blood vessels in hands and feet open up.</li>
+            <li>heat radiates out through the extremities.</li>
+            <li>core temperature drops — which is exactly what your circadian system is trying to do as it ramps up melatonin.</li>
+          </ul>
+          <p class="sub">socks are a good way to fall asleep.</p>
+        </section>
+
+        <section>
+          <h3>what the research says</h3>
+          <div class="two-col">
+            <div class="card">
+              <p class="big-stat">~65–70°f</p>
+              <p class="small">optimal ambient temperature for sleep. socks help your body get there in a cool room.</p>
+            </div>
+            <div class="card">
+              <p class="big-stat">20 min</p>
+              <p class="small">warming the feet for 20 minutes before bed has been shown to reduce insomnia symptoms and fatigue.</p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h3>other things socks-at-night may help with</h3>
+          <ul>
+            <li><strong>hot flashes</strong> — cooling the core may reduce night sweats</li>
+            <li><strong>Raynaud's syndrome</strong> — prevents cold-triggered flare-ups</li>
+            <li><strong>cracked heels</strong> — traps balm against the skin overnight</li>
+            <li><strong>generally being a cold person</strong> — underrated benefit</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>caveats (read this part)</h3>
+          <ul>
+            <li>tight or compression socks: <strong>no</strong>. you want loose-fitting.</li>
+            <li>circulation problems / foot swelling: talk to a doctor first.</li>
+            <li>synthetic fibers trap moisture → bacteria → not great.</li>
+            <li>the elderly-insomnia studies didn't show the same benefit. </li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>how to pick your sleep socks</h3>
+          <div class="two-col">
+            <div class="card">
+              <p><strong>material</strong></p>
+              <ul class="small">
+                <li>merino wool (gold standard)</li>
+                <li>cashmere (luxurious)</li>
+                <li>cotton (breathable)</li>
+                <li>avoid: polyester, nylon-heavy blends</li>
+              </ul>
+            </div>
+            <div class="card">
+              <p><strong>fit & hygiene</strong></p>
+              <ul class="small">
+                <li>loose around the calf</li>
+                <li>no elastic dents in the morning</li>
+                <li>fresh pair each night</li>
+                <li>wash feet before putting them on</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h3>verdict</h3>
+          <p>
+            sleeping with socks on is a <span class="accent">cheap, low-risk,
+            evidence-flecked</span> intervention.
+          </p>
+          <p class="sub">if you've never tried it, try it tonight.</p>
+        </section>
+
+        <!-- =================== PART 2: SOCK COMPANIES =================== -->
+        <section class="section-title">
+          <p class="kicker">part 2</p>
+          <h2>a tour of <span class="accent">sock companies</span></h2>
+          <p class="sub">and a ranking</p>
+        </section>
+
+        <section>
+          <h3>the sock industrial complex</h3>
+          <ul>
+            <li>global sock market: roughly <strong>$50B/yr</strong>, growing low single digits.</li>
+            <li>wildly fragmented — from $2 Hanes six-packs to $50 Japanese hand-knit merino.</li>
+            <li>five rough camps: <em>heritage</em>, <em>performance</em>, <em>mission-driven DTC</em>, <em>fashion</em>, <em>luxury</em>.</li>
+            <li>most "sock brands" don't make socks. they design them. the mill in North Carolina or Italy or Turkey makes them.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>heritage</h3>
+          <div class="two-col">
+            <div class="card">
+              <p><strong>Wigwam</strong> (1905)</p>
+              <p class="small">Sheboygan, Wisconsin. the oldest American sock maker still operating. still family-run. outdoor + workwear.</p>
+            </div>
+            <div class="card">
+              <p><strong>Hanes</strong> (1901)</p>
+              <p class="small">the default sock for most of America. </p>
+            </div>
+            <div class="card">
+              <p><strong>Fruit of the Loom</strong> (1851)</p>
+              <p class="small">predates the U.S. Civil War. now owned by Berkshire Hathaway. Warren Buffett.</p>
+            </div>
+            <div class="card">
+              <p><strong>Pantherella</strong> (1937, UK)</p>
+              <p class="small">fine-gauge dress socks out of Leicester. James Bond wears them.</p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h3>outdoor / hiking</h3>
+          <div class="two-col">
+            <div class="card">
+              <p><strong>Smartwool</strong> (1994)</p>
+              <p class="small">Steamboat Springs, Colorado. popularized merino wool for outdoor use. now owned by VF Corp.</p>
+            </div>
+            <div class="card">
+              <p><strong>Darn Tough</strong> (1978)</p>
+              <p class="small">Northfield, Vermont. <strong>unconditional lifetime guarantee.</strong> knit in Vermont. popular in New York.</p>
+            </div>
+            <div class="card">
+              <p><strong>Thorlos</strong> (1980)</p>
+              <p class="small">Statesville, North Carolina. invented sport-specific cushion engineering.</p>
+            </div>
+            <div class="card">
+              <p><strong>Injinji</strong> (1999)</p>
+              <p class="small">toe socks for runners. look weird, prevent blisters, have a small fanatic following.</p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h3>running / athletic</h3>
+          <div class="two-col">
+            <div class="card">
+              <p><strong>Feetures</strong> (2002)</p>
+              <p class="small">Conover, North Carolina. anatomically shaped (left and right). lifetime guarantee. the marathoner's pick.</p>
+            </div>
+            <div class="card">
+              <p><strong>Balega</strong> (2002)</p>
+              <p class="small">South African origin. mohair-blend cushioning. famously soft. the "if it's good enough for an ultramarathoner" sock.</p>
+            </div>
+            <div class="card">
+              <p><strong>Wright Sock</strong> (1992)</p>
+              <p class="small">patented <strong>double-layer</strong> design — friction happens between the two sock layers, not against your skin. blister destroyer.</p>
+            </div>
+            <div class="card">
+              <p><strong>Nike Elite Crew</strong></p>
+              <p class="small">the cushioned basketball sock that defined a decade of athleisure. came in colorways. you owned at least one pair.</p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h3>mission-driven DTC</h3>
+          <div class="two-col">
+            <div class="card">
+              <p><strong>Bombas</strong> (2013)</p>
+              <p class="small">founded after the founders learned socks are the #1 most-requested item at homeless shelters. one pair donated for every pair sold. over <strong>100 million pairs</strong> donated to date. Shark Tank's most successful deal ever.</p>
+            </div>
+            <div class="card">
+              <p><strong>Conscious Step</strong> (2014)</p>
+              <p class="small">each sock pattern partners with a different charity. buy "socks that fight malaria," "socks that plant trees," etc.</p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h3>fashion / lifestyle</h3>
+          <div class="two-col">
+            <div class="card">
+              <p><strong>Stance</strong> (2009)</p>
+              <p class="small">made socks a streetwear item. official sock of the NBA. collabs with everyone from Rihanna to Star Wars.</p>
+            </div>
+            <div class="card">
+              <p><strong>Happy Socks</strong> (2008, Sweden)</p>
+              <p class="small">bright patterns, gift-store ubiquity. Snoop Dogg has a line. they are exactly what they say they are.</p>
+            </div>
+            <div class="card">
+              <p><strong>Richer Poorer</strong> (2010)</p>
+              <p class="small">California basics with a slight design lean. the "Everlane of socks" for a minute.</p>
+            </div>
+            <div class="card">
+              <p><strong>Paul Smith</strong></p>
+              <p class="small">striped dress socks</p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h3>luxury</h3>
+          <div class="two-col">
+            <div class="card">
+              <p><strong>Falke</strong> (1895, Germany)</p>
+              <p class="small">the Mercedes of socks. family-owned, ~$30–$60 a pair. their "Airport" model is the dress-sock benchmark.</p>
+            </div>
+            <div class="card">
+              <p><strong>Bresciani</strong> (1970, Italy)</p>
+              <p class="small">handmade in Spirano. sold at Bergdorf. </p>
+            </div>
+            <div class="card">
+              <p><strong>Mes Chaussettes Rouges</strong></p>
+              <p class="small">Paris boutique that specializes in over-the-calf dress socks. </p>
+            </div>
+            <div class="card">
+              <p><strong>Anonymous Ism</strong> (Japan)</p>
+              <p class="small">hand-loomed, slubby cotton. indigo-dyed. the hipster sock of record, ~$30 a pair.</p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h3>mass-market mainstays</h3>
+          <div class="two-col">
+            <div class="card">
+              <p><strong>Gold Toe</strong> (1902)</p>
+              <p class="small">Bally, Pennsylvania. the original reinforced-toe dress sock. your grandfather wore them. so should you.</p>
+            </div>
+            <div class="card">
+              <p><strong>Kirkland Signature</strong> (Costco)</p>
+              <p class="small">the dark horse. a $14 merino six-pack that quietly outperforms half this list. genuinely.</p>
+            </div>
+            <div class="card">
+              <p><strong>People Socks</strong></p>
+              <p class="small">Korean-made cotton basics. Amazon-bestseller status for years. the secret of every minimalist who claims they "don't care about socks."</p>
+            </div>
+            <div class="card">
+              <p><strong>Mack Weldon</strong> (2012)</p>
+              <p class="small">DTC men's basics. silver-lined no-show socks for sneakers. one of the few DTC basics brands still standing.</p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h3>and a few more worth knowing</h3>
+          <div class="two-col">
+            <div class="card">
+              <p><strong>Stems</strong> (NYC)</p>
+              <p class="small">women's fashion socks with a tailored sensibility. the dress-sock answer to Mansur Gavriel.</p>
+            </div>
+            <div class="card">
+              <p><strong>Comrad</strong> (2017)</p>
+              <p class="small">compression socks rebranded as a lifestyle product. surprisingly effective on long flights.</p>
+            </div>
+            <div class="card">
+              <p><strong>American Trench</strong> (2012)</p>
+              <p class="small">Philadelphia. small-batch USA-knit socks in vintage patterns. menswear-blog catnip.</p>
+            </div>
+            <div class="card">
+              <p><strong>Rockford Red Heel</strong> (1932)</p>
+              <p class="small">the original "sock monkey" sock. still made. people still buy them to make monkeys.</p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h3>the ranking — best in category</h3>
+          <ul style="text-align:left;">
+            <li><strong>best to sleep in:</strong> Smartwool merino crew</li>
+            <li><strong>best workhorse:</strong> Darn Tough (lifetime guarantee)</li>
+            <li><strong>best for running:</strong> Feetures or Balega — pick your texture</li>
+            <li><strong>best anti-blister:</strong> Wright Sock double-layer</li>
+            <li><strong>best for the world:</strong> Bombas</li>
+            <li><strong>best dress sock:</strong> Falke Airport (luxury) or Gold Toe (workhorse)</li>
+            <li><strong>best vibes:</strong> Happy Socks for cheer, Anonymous Ism for taste</li>
+            <li><strong>best heritage:</strong> Wigwam (1905, still standing)</li>
+            <li><strong>best dark horse:</strong> Kirkland Signature merino six-pack</li>
+            <li><strong>best value:</strong> Hanes six-pack. don't overthink it.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>the ranking — tier list</h3>
+          <div class="tier-list">
+            <div class="tier-row tier-S">
+              <div class="tier-label">S</div>
+              <div class="tier-body">
+                <strong>Darn Tough · Smartwool · Feetures</strong>
+                <span class="small">best-in-class on the things that matter (durability, materials).</span>
+              </div>
+            </div>
+            <div class="tier-row tier-A">
+              <div class="tier-label">A</div>
+              <div class="tier-body">
+                <strong>Bombas · Falke · Thorlos · Balega · Kirkland Signature</strong>
+                <span class="small">excellent at what they do — including, surprisingly, the Costco one.</span>
+              </div>
+            </div>
+            <div class="tier-row tier-B">
+              <div class="tier-label">B</div>
+              <div class="tier-body">
+                <strong>Stance · Happy Socks · Wigwam · Anonymous Ism · Gold Toe · Wright Sock</strong>
+                <span class="small">strong personality or strong specialty.</span>
+              </div>
+            </div>
+            <div class="tier-row tier-C">
+              <div class="tier-label">C</div>
+              <div class="tier-body">
+                <strong>Hanes · Fruit of the Loom · People Socks</strong>
+                <span class="small">unrankable as art. indispensable as infrastructure.</span>
+              </div>
+            </div>
+            <div class="tier-row tier-F">
+              <div class="tier-label">F</div>
+              <div class="tier-body">
+                <strong>anything 100% polyester</strong>
+                <span class="small">your feet deserve better.</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- =================== PART 3: BOMBAS DEEP HISTORY =================== -->
+        <section class="section-title">
+          <p class="kicker">part 3</p>
+          <h2>a deep history of <span class="accent">Bombas</span></h2>
+          <p class="sub">how a Facebook post about homeless shelters became a $500M sock company</p>
+        </section>
+
+        <section>
+          <h3>the seed (2011)</h3>
+          <ul>
+            <li><strong>Randy Goldberg</strong>, working in food at NYC startups, sees a Facebook post that stops him:</li>
+            <li><em>"socks are the #1 most-requested item at homeless shelters."</em></li>
+            <li>why? shelters can't accept used socks (hygiene). and if you live on your feet, you wear socks out fast — and a bad sock means blisters, infection, frostbite.</li>
+            <li>Randy can't stop thinking about it.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>the co-founder</h3>
+          <ul>
+            <li>Randy calls his college friend <strong>David Heath</strong>.</li>
+            <li>their idea: a sock company that gives one pair away for every pair sold — but unlike most one-for-one models, the donated product is <em>actually designed for the people receiving it</em>.</li>
+            <li>anti-microbial. reinforced. darker colors (so they don't show wear). built for someone walking all day.</li>
+            <li>then they make a key decision: <strong>before launching, get the product right</strong>.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>two years of R&D</h3>
+          <p>David and Randy spend ~2 years obsessing over what makes a great sock. the result becomes the Bombas signature:</p>
+          <ul>
+            <li><strong>honeycomb arch support</strong> — like a compression bandage for the midfoot</li>
+            <li><strong>seamless toe</strong> — no rubbing ridge across the top of your toes</li>
+            <li><strong>Y-stitched heel</strong> — keeps the sock cupped to your foot instead of bunching</li>
+            <li><strong>"blister tab"</strong> — extra fabric at the Achilles to keep the heel from biting</li>
+            <li><strong>long-staple cotton, fine-gauge knit</strong> — soft, durable, breathable</li>
+          </ul>
+          <p class="sub">most sock companies pick a mill and add a logo. Bombas designed the sock.</p>
+        </section>
+
+        <section>
+          <h3>the name</h3>
+          <p><strong>Bombas</strong> comes from the Latin <em>bombus</em> — bumblebee.</p>
+          <ul>
+            <li>bees work together as a hive; no single bee succeeds alone.</li>
+            <li>tagline: <strong>"Bee Better."</strong></li>
+            <li>the logo is a bee.</li>
+            <li>have you heard of bumblebeans.social?</li>
+
+          </ul>
+          <p class="sub">why a bee? because the bee story matches the company story: collective benefit, small things compounding.</p>
+        </section>
+
+        <section>
+          <h3>launch (2013)</h3>
+          <ul>
+            <li><strong>October 2013</strong>: Bombas launches on Indiegogo with a 30-day campaign.</li>
+            <li>goal: $15,000. they raise <strong>$145,000.</strong></li>
+            <li>within months they're shipping their first orders — and their first donations.</li>
+            <li>by the end of year one, they sold ~$450K in socks and donated ~50,000 pairs.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Shark Tank (2014)</h3>
+          <ul>
+            <li><strong>September 2014.</strong> David and Randy go on Shark Tank.</li>
+            <li>they ask for <strong>$200,000 for 5%</strong>.</li>
+            <li><strong>Daymond John</strong> bites. deal: $200K for 17.5%.</li>
+            <li>the next day, traffic to Bombas.com goes viral.</li>
+            <li>this becomes <strong>the most successful deal in Shark Tank history</strong>, by revenue, by a wide margin.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>the growth curve</h3>
+          <ul class="timeline">
+            <li><b>2014</b> Shark Tank deal closes. ~$1M in revenue.</li>
+            <li><b>2015</b> $4.6M in revenue.</li>
+            <li><b>2017</b> $46M in revenue. first million pairs donated.</li>
+            <li><b>2018</b> <strong>$100M+ in revenue.</strong> expand into t-shirts.</li>
+            <li><b>2021</b> expand into underwear and slippers. hit <strong>50 million pairs donated</strong>.</li>
+            <li><b>2024</b> cross <strong>100 million items donated</strong>. annual revenue estimated at <strong>$300M+</strong>.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>what makes this story unusual</h3>
+          <ul>
+            <li><strong>bootstrapped-ish.</strong> Bombas raised relatively little outside capital — under $10M before they were comfortably profitable.</li>
+            <li><strong>profitable.</strong> unlike most DTC (direct to consumer) darlings, Bombas was making money for years.</li>
+            <li><strong>private.</strong> still independent. no acquisition. no SPAC. no "we'll figure out monetization later."</li>
+            <li><strong>mission integrity.</strong> the donation program was the whole pitch on day one, and it's still the whole pitch.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3> Bombas lessons</h3>
+          <ul>
+            <li>you can sell socks for $12 a pair if the socks fit.</li>
+            <li>"doing good" only works as marketing if the doing-good part is engineered as carefully as the product.</li>
+            <li>patience compounds: 2 years of R&D + 10 years of focus &gt; 100 b2b saas startups in 100 minutes.</li>
+            <li>sometimes the most boring product category (white tube socks) is the most under-disrupted.</li>
+          </ul>
+        </section>
+
+        <!-- =================== CLOSING =================== -->
+        <section class="section-title">
+          <p class="kicker">wrap-up</p>
+          <h2>three things about <span class="accent">socks</span></h2>
+        </section>
+
+        <section>
+          <h3>three things</h3>
+          <ol style="text-align:left;">
+            <li><strong>wear them to bed.</strong> merino, loose, fresh pair. your circadian system will thank you.</li>
+            <li><strong>pay attention to who made the sock you're wearing.</strong> Darn Tough's lifetime guarantee and Bombas's donation model are two very different answers to "why this sock," and both are real.</li>
+            <li><strong>Bombas is an awesome story.</strong></li>
+          </ol>
+        </section>
+
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+    <script>
+      Reveal.initialize({
+        hash: true,
+        slideNumber: "c/t",
+        transition: "slide",
+        width: 1280,
+        height: 800,
+        margin: 0.06,
+        minScale: 0.2,
+        maxScale: 1.6,
+        plugins: [RevealNotes, RevealHighlight],
+      });
+    </script>
+  </body>
+</html>
