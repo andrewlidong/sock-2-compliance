@@ -1,0 +1,14 @@
+# Terraform
+**/.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars.local
+crash.log
+crash.*.log
+
+# Terragrunt
+**/.terragrunt-cache/
+
+# Terragrunt-generated files (root terragrunt.hcl regenerates these on every run)
+**/provider.tf
+**/backend.tf
