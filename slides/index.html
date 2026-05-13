@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Socks — A Talk</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/night.css"
+      id="theme"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/monokai.css"
+    />
+
+    <style>
+      :root {
+        --warm: #f4c77b;
+        --warm-2: #e98a4b;
+        --cool: #8fb8de;
+        --ink: #1b1b1f;
+        --paper: #f7f1e3;
+      }
+      .reveal {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      }
+      .reveal h1,
+      .reveal h2,
+      .reveal h3 {
+        font-family: "Georgia", "Times New Roman", serif;
+        letter-spacing: -0.01em;
+      }
+      .reveal h1 .accent,
+      .reveal h2 .accent {
+        color: var(--warm);
+      }
+      .reveal .footnote {
+        font-size: 0.45em;
+        opacity: 0.65;
+        margin-top: 1em;
+      }
+      .reveal .big-stat {
+        font-size: 2.4em;
+        color: var(--warm);
+        font-weight: 700;
+        line-height: 1.1;
+      }
+      .reveal .sub {
+        opacity: 0.75;
+        font-size: 0.8em;
+      }
+      .reveal section.section-title {
+        text-align: left;
+      }
+      .reveal section.section-title h2 {
+        font-size: 3em;
+        margin-bottom: 0.1em;
+      }
+      .reveal .kicker {
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        font-size: 0.55em;
+        color: var(--warm);
+      }
+      .reveal blockquote {
+        border-left: 4px solid var(--warm);
+        background: transparent;
+        font-style: italic;
+      }
+      .reveal ul {
+        line-height: 1.5;
+      }
+      .reveal .two-col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5em;
+        text-align: left;
+      }
+      .reveal .card {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 12px;
+        padding: 0.8em 1em;
+      }
+      .reveal .emoji {
+        font-size: 1.4em;
+      }
+      .reveal .timeline {
+        text-align: left;
+        font-size: 0.7em;
+      }
+      .reveal .timeline li {
+        margin: 0.4em 0;
+      }
+      .reveal .timeline b {
+        color: var(--warm);
+        margin-right: 0.5em;
+      }
+      .reveal .small {
+        font-size: 0.7em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <!-- =================== TITLE =================== -->
+        <section>
+          <h1>
+            <span class="accent">Socks</span>
+          </h1>
+          <p class="sub">a short, very serious talk</p>
+          <p class="footnote">Recurse Center · non-programming talk</p>
+        </section>
+
+        <section>
+          <h2>Why <span class="accent">socks</span>?</h2>
+          <ul>
+            <li>Everyone owns them.</li>
+            <li>Almost no one thinks about them.</li>
+            <li>They sit at the intersection of <em>sleep science</em>, <em>e-commerce history</em>, and <em>great apes</em>. Really.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Roadmap</h3>
+          <ol style="text-align:left;">
+            <li>Should you sleep with socks on?</li>
+            <li>Bonobos (the pants company that ate the internet)</li>
+            <li>Bonobos (the great ape that, frankly, has its act together)</li>
+          </ol>
+        </section>
+
+        <!-- =================== PART 1: SLEEP =================== -->
+        <section class="section-title">
+          <p class="kicker">Part 1</p>
+          <h2>Sleeping <span class="accent">with socks on</span></h2>
+          <p class="sub">a controversial bedtime practice, defended on the merits</p>
+        </section>
+
+        <section>
+          <h3>The claim</h3>
+          <blockquote>
+            Wearing socks to bed helps you fall asleep faster, stay asleep
+            longer, and may even improve your sex life.
+          </blockquote>
+          <p class="footnote">Source: Sleep Foundation, <em>Sleeping With Socks On</em></p>
+        </section>
+
+        <section>
+          <h3>The (counterintuitive) mechanism</h3>
+          <p>Warming your <strong>feet</strong> <em>cools</em> your <strong>core</strong>.</p>
+          <ul>
+            <li><strong>Distal vasodilation</strong>: blood vessels in hands and feet open up.</li>
+            <li>Heat radiates out through the extremities.</li>
+            <li>Core temperature drops — which is exactly what your circadian system is trying to do as it ramps up melatonin.</li>
+          </ul>
+          <p class="sub">Socks are basically a thermal cheat code for falling asleep.</p>
+        </section>
+
+        <section>
+          <h3>What the research says</h3>
+          <div class="two-col">
+            <div class="card">
+              <p class="big-stat">~65–70°F</p>
+              <p class="small">Optimal ambient temperature for sleep. Socks help your body get there in a cool room.</p>
+            </div>
+            <div class="card">
+              <p class="big-stat">20 min</p>
+              <p class="small">Warming the feet for 20 minutes before bed has been shown to reduce insomnia symptoms and fatigue.</p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h3>The "80% study"</h3>
+          <p class="big-stat">80% vs 50%</p>
+          <p>
+            In one (much-cited, take-with-salt) study, 80% of couples wearing socks
+            achieved orgasm together, vs. 50% without.
+          </p>
+          <p class="footnote">
+            The mechanism is the same: warm feet → comfort → vasodilation. Whether
+            you find this convincing or hilarious is a personal matter.
+          </p>
+        </section>
+
+        <section>
+          <h3>Other things socks-at-night may help with</h3>
+          <ul>
+            <li><strong>Hot flashes</strong> — cooling the core may reduce night sweats</li>
+            <li><strong>Raynaud's syndrome</strong> — prevents cold-triggered flare-ups</li>
+            <li><strong>Cracked heels</strong> — traps balm against the skin overnight</li>
+            <li><strong>Generally being a cold person</strong> — underrated benefit</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Caveats (read this part)</h3>
+          <ul>
+            <li>Tight or compression socks: <strong>no</strong>. You want loose-fitting.</li>
+            <li>Circulation problems / foot swelling: talk to a doctor first.</li>
+            <li>Synthetic fibers trap moisture → bacteria → not great.</li>
+            <li>The elderly-insomnia studies didn't show the same benefit. Mileage varies.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>How to pick your sleep socks</h3>
+          <div class="two-col">
+            <div class="card">
+              <p><strong>Material</strong></p>
+              <ul class="small">
+                <li>Merino wool (gold standard)</li>
+                <li>Cashmere (luxurious)</li>
+                <li>Cotton (breathable)</li>
+                <li>Avoid: polyester, nylon-heavy blends</li>
+              </ul>
+            </div>
+            <div class="card">
+              <p><strong>Fit & hygiene</strong></p>
+              <ul class="small">
+                <li>Loose around the calf</li>
+                <li>No elastic dents in the morning</li>
+                <li>Fresh pair each night</li>
+                <li>Wash feet before putting them on</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h3>Verdict</h3>
+          <p>
+            Sleeping with socks on is a <span class="accent">cheap, low-risk,
+            evidence-flecked</span> intervention.
+          </p>
+          <p class="sub">If you've never tried it, try it tonight.</p>
+        </section>
+
+        <!-- =================== PART 2: BONOBOS THE COMPANY =================== -->
+        <section class="section-title">
+          <p class="kicker">Part 2</p>
+          <h2><span class="accent">Bonobos</span></h2>
+          <p class="sub">the pants company, the DTC poster child, the cautionary tale</p>
+        </section>
+
+        <section>
+          <h3>Origin story</h3>
+          <ul>
+            <li><strong>2007.</strong> Stanford GSB classmates <strong>Brian Spaly</strong> and <strong>Andy Dunn</strong> are tired of men's pants that fit poorly — gap at the waist, baggy through the thigh.</li>
+            <li>Spaly starts sewing prototypes with a <strong>curved waistband</strong>.</li>
+            <li>They sell them out of a car trunk to classmates. They sell out.</li>
+            <li>The company gets a name: <strong>Bonobos</strong>.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Why "Bonobos"?</h3>
+          <blockquote>
+            Andy Dunn liked that bonobos (the apes) were "matriarchal, peaceful,
+            and well-dressed by primate standards" — okay, the last part is a joke,
+            but the matriarchal-and-peaceful part is real, and the name was meant
+            to feel friendly and a little weird.
+          </blockquote>
+          <p class="footnote">More on the actual primate in Part 3.</p>
+        </section>
+
+        <section>
+          <h3>The big bet: direct-to-consumer</h3>
+          <ul>
+            <li>No department stores. No middlemen.</li>
+            <li>Sell pants online, ship them to your door.</li>
+            <li>At the time (2007–2010), this was <em>weird</em>. Men did not buy pants on the internet.</li>
+            <li>Bonobos was one of the very first brands to prove they would.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>The clever twist: the Guideshop</h3>
+          <ul>
+            <li><strong>2011–2012.</strong> Bonobos opens physical "Guideshops."</li>
+            <li>You make an appointment. A guide brings you sizes. You drink a beer.</li>
+            <li>You buy <strong>nothing</strong> in the store — your order ships from a warehouse.</li>
+            <li>This split — try in store, buy online — became a template that nearly every DTC brand copied.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>The money</h3>
+          <ul class="timeline">
+            <li><b>2007</b> Founded.</li>
+            <li><b>2010</b> Raises from Accel, Lightspeed.</li>
+            <li><b>2013</b> Spaly leaves; Dunn takes over as CEO. (Spaly later founds Trunk Club.)</li>
+            <li><b>2014</b> Nordstrom invests $16.4M.</li>
+            <li><b>2017</b> <strong>Walmart acquires Bonobos for $310M.</strong> Peak DTC.</li>
+            <li><b>2023</b> Walmart sells Bonobos to <strong>WHP Global + Express</strong> for ~$75M. A ~$235M write-down.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>What the Bonobos arc actually means</h3>
+          <ul>
+            <li>DTC, circa 2010, was a real innovation: cut middlemen, own the customer relationship.</li>
+            <li>DTC, circa 2020, was <em>too easy to copy</em>. Everyone had a Shopify and a Facebook ad budget.</li>
+            <li>Customer acquisition costs ate the margins.</li>
+            <li>The Walmart marriage was awkward: a digital-native brand inside an old-economy giant.</li>
+            <li>Bonobos was right about the future. It just didn't get to own it.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Andy Dunn's second act</h3>
+          <ul>
+            <li>Writes a memoir, <em>Burn Rate</em> (2022), about building Bonobos while managing bipolar disorder.</li>
+            <li>One of the more honest founder books in recent memory.</li>
+            <li>If you read one book about DTC, read this one.</li>
+          </ul>
+        </section>
+
+        <!-- =================== PART 3: BONOBOS THE APE =================== -->
+        <section class="section-title">
+          <p class="kicker">Part 3</p>
+          <h2>The actual <span class="accent">bonobo</span></h2>
+          <p class="sub"><em>Pan paniscus</em> · the chillest great ape</p>
+        </section>
+
+        <section>
+          <h3>The basics</h3>
+          <ul>
+            <li>One of two species in the genus <em>Pan</em> — the other is the chimpanzee.</li>
+            <li>Share roughly <strong>98.7%</strong> of their DNA with humans. About as close as chimps.</li>
+            <li>Found <strong>only</strong> south of the Congo River, in the Democratic Republic of the Congo.</li>
+            <li>Sometimes still called "pygmy chimpanzees" — a misnomer; they're not actually that much smaller.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>A surprisingly recent discovery</h3>
+          <ul>
+            <li><strong>1929.</strong> German anatomist Ernst Schwarz examines a skull in a Belgian museum that had been labeled "chimpanzee."</li>
+            <li>He realizes it's a separate species.</li>
+            <li>Until <strong>1933</strong>, bonobos weren't formally recognized as distinct from chimpanzees.</li>
+            <li>For context: that's <em>after</em> the discovery of insulin, <em>after</em> the Model T, <em>after</em> the first transatlantic flight.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>What makes bonobos different</h3>
+          <div class="two-col">
+            <div class="card">
+              <p><strong>Chimpanzees</strong></p>
+              <ul class="small">
+                <li>Male-dominated</li>
+                <li>Inter-group violence is common</li>
+                <li>Resolve tension with aggression</li>
+                <li>Have been observed waging coordinated warfare</li>
+              </ul>
+            </div>
+            <div class="card">
+              <p><strong>Bonobos</strong></p>
+              <ul class="small">
+                <li>Female-led coalitions</li>
+                <li>Very little lethal violence</li>
+                <li>Resolve tension with… social bonding</li>
+                <li>"Make love, not war" is the actual scientific shorthand</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h3>Why the difference?</h3>
+          <ul>
+            <li>One leading theory: the Congo River.</li>
+            <li>Bonobos ended up on the south side, where food is abundant and competition with gorillas is low.</li>
+            <li>Less resource scarcity → less reason to fight.</li>
+            <li>Evolution rewarded the apes who got along.</li>
+          </ul>
+          <p class="sub">A nice reminder that aggression isn't destiny; it's a response to conditions.</p>
+        </section>
+
+        <section>
+          <h3>Female power</h3>
+          <ul>
+            <li>Female bonobos form strong alliances <em>despite</em> not being related — they leave their birth groups as adolescents.</li>
+            <li>These alliances keep individual males from dominating.</li>
+            <li>The result: the highest-ranking individual in a bonobo group is almost always a female.</li>
+            <li>Among great apes, this is unusual. Among mammals generally, it's unusual.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Conservation status</h3>
+          <ul>
+            <li><strong>Endangered.</strong> IUCN Red List.</li>
+            <li>Estimates range from 15,000–50,000 in the wild — we genuinely don't know.</li>
+            <li>Threats: habitat loss, poaching, civil unrest in the DRC.</li>
+            <li>The bonobo's entire wild range is one country, which is both a conservation opportunity and a fragility.</li>
+          </ul>
+        </section>
+
+        <!-- =================== CLOSING =================== -->
+        <section class="section-title">
+          <p class="kicker">Wrap-up</p>
+          <h2>Three things about <span class="accent">socks</span></h2>
+        </section>
+
+        <section>
+          <h3>Three things</h3>
+          <ol style="text-align:left;">
+            <li>Wear them to bed. Merino, loose, fresh pair.</li>
+            <li>The company named Bonobos sold curved-waistband pants on the internet, briefly conquered retail, and got bought and re-sold for a $235M loss. Eras end.</li>
+            <li>The animal named bonobo is matriarchal, peaceful, and runs a better society than most of us. Worth thinking about.</li>
+          </ol>
+        </section>
+
+        <section>
+          <h2>Thanks <span class="accent">♡</span></h2>
+          <p class="sub">questions, sock recommendations, ape facts welcomed</p>
+        </section>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+    <script>
+      Reveal.initialize({
+        hash: true,
+        slideNumber: "c/t",
+        transition: "slide",
+        plugins: [RevealNotes, RevealHighlight],
+      });
+    </script>
+  </body>
+</html>
