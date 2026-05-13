@@ -134,6 +134,49 @@
       .reveal .small {
         font-size: 0.7em;
       }
+      .reveal .tier-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4em;
+        text-align: left;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+      .reveal .tier-row {
+        display: grid;
+        grid-template-columns: 90px 1fr;
+        align-items: stretch;
+        border-radius: 8px;
+        overflow: hidden;
+      }
+      .reveal .tier-label {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.8em;
+        font-weight: 900;
+        color: #1b1b1f;
+        letter-spacing: 0;
+      }
+      .reveal .tier-S .tier-label { background: #ff5a5a; }
+      .reveal .tier-A .tier-label { background: #ff9d3a; }
+      .reveal .tier-B .tier-label { background: #f4c77b; }
+      .reveal .tier-C .tier-label { background: #7fc97f; color: #fff; }
+      .reveal .tier-F .tier-label { background: #777; color: #fff; }
+      .reveal .tier-body {
+        background: rgba(255, 255, 255, 0.06);
+        padding: 0.55em 0.9em;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .reveal .tier-body strong {
+        font-size: 0.95em;
+      }
+      .reveal .tier-body .small {
+        font-size: 0.65em;
+        opacity: 0.75;
+      }
     </style>
   </head>
   <body>
@@ -454,21 +497,42 @@
 
         <section>
           <h3>the ranking — tier list</h3>
-          <div class="two-col" style="grid-template-columns: auto 1fr;">
-            <div class="card"><strong style="color: var(--warm); font-size:1.4em;">S</strong></div>
-            <div class="card"><strong>Darn Tough · Smartwool · Feetures</strong><br /><span class="small">best-in-class on the things that matter (durability, materials).</span></div>
-
-            <div class="card"><strong style="color: var(--warm); font-size:1.4em;">A</strong></div>
-            <div class="card"><strong>Bombas · Falke · Thorlos · Balega · Kirkland Signature</strong><br /><span class="small">excellent at what they do — including, surprisingly, the Costco one.</span></div>
-
-            <div class="card"><strong style="color: var(--warm); font-size:1.4em;">B</strong></div>
-            <div class="card"><strong>Stance · Happy Socks · Wigwam · Anonymous Ism · Gold Toe · Wright Sock</strong><br /><span class="small">strong personality or strong specialty.</span></div>
-
-            <div class="card"><strong style="color: var(--warm); font-size:1.4em;">C</strong></div>
-            <div class="card"><strong>Hanes · Fruit of the Loom · People Socks</strong><br /><span class="small">unrankable as art. indispensable as infrastructure.</span></div>
-
-            <div class="card"><strong style="color: var(--warm); font-size:1.4em;">F</strong></div>
-            <div class="card"><strong>anything 100% polyester</strong><br /><span class="small"></span></div>
+          <div class="tier-list">
+            <div class="tier-row tier-S">
+              <div class="tier-label">S</div>
+              <div class="tier-body">
+                <strong>Darn Tough · Smartwool · Feetures</strong>
+                <span class="small">best-in-class on the things that matter (durability, materials).</span>
+              </div>
+            </div>
+            <div class="tier-row tier-A">
+              <div class="tier-label">A</div>
+              <div class="tier-body">
+                <strong>Bombas · Falke · Thorlos · Balega · Kirkland Signature</strong>
+                <span class="small">excellent at what they do — including, surprisingly, the Costco one.</span>
+              </div>
+            </div>
+            <div class="tier-row tier-B">
+              <div class="tier-label">B</div>
+              <div class="tier-body">
+                <strong>Stance · Happy Socks · Wigwam · Anonymous Ism · Gold Toe · Wright Sock</strong>
+                <span class="small">strong personality or strong specialty.</span>
+              </div>
+            </div>
+            <div class="tier-row tier-C">
+              <div class="tier-label">C</div>
+              <div class="tier-body">
+                <strong>Hanes · Fruit of the Loom · People Socks</strong>
+                <span class="small">unrankable as art. indispensable as infrastructure.</span>
+              </div>
+            </div>
+            <div class="tier-row tier-F">
+              <div class="tier-label">F</div>
+              <div class="tier-body">
+                <strong>anything 100% polyester</strong>
+                <span class="small">your feet deserve better.</span>
+              </div>
+            </div>
           </div>
         </section>
 
